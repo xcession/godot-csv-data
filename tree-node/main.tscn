@@ -1,0 +1,171 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MainContainer" type="HSplitContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DataPanel" type="PanelContainer" parent="MainContainer"]
+margin_right = 354.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="MainContainer/DataPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 347.0
+margin_bottom = 393.0
+
+[node name="Header" type="Label" parent="MainContainer/DataPanel/Container"]
+margin_right = 340.0
+margin_bottom = 14.0
+text = "Data"
+
+[node name="Tree" type="Tree" parent="MainContainer/DataPanel/Container"]
+margin_top = 18.0
+margin_right = 340.0
+margin_bottom = 386.0
+size_flags_vertical = 3
+
+[node name="ConsolePanel" type="PanelContainer" parent="MainContainer"]
+margin_left = 366.0
+margin_right = 720.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+
+[node name="Container" type="VBoxContainer" parent="MainContainer/ConsolePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 347.0
+margin_bottom = 393.0
+
+[node name="Label" type="Label" parent="MainContainer/ConsolePanel/Container"]
+margin_right = 340.0
+margin_bottom = 14.0
+text = "Console"
+
+[node name="Console" type="TextEdit" parent="MainContainer/ConsolePanel/Container"]
+margin_top = 18.0
+margin_right = 340.0
+margin_bottom = 326.0
+size_flags_vertical = 3
+readonly = true
+highlight_current_line = true
+show_line_numbers = true
+context_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_enabled = false
+selecting_enabled = false
+smooth_scrolling = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputContainer" type="HBoxContainer" parent="MainContainer/ConsolePanel/Container"]
+margin_top = 330.0
+margin_right = 340.0
+margin_bottom = 386.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColumnPanel" type="PanelContainer" parent="MainContainer/ConsolePanel/Container/InputContainer"]
+margin_left = 38.0
+margin_right = 126.0
+margin_bottom = 56.0
+
+[node name="Column" type="VBoxContainer" parent="MainContainer/ConsolePanel/Container/InputContainer/ColumnPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 81.0
+margin_bottom = 49.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainContainer/ConsolePanel/Container/InputContainer/ColumnPanel/Column"]
+margin_right = 74.0
+margin_bottom = 14.0
+text = "Column"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="SpinBox" parent="MainContainer/ConsolePanel/Container/InputContainer/ColumnPanel/Column"]
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 42.0
+
+[node name="RowPanel" type="PanelContainer" parent="MainContainer/ConsolePanel/Container/InputContainer"]
+margin_left = 130.0
+margin_right = 218.0
+margin_bottom = 56.0
+
+[node name="Row" type="VBoxContainer" parent="MainContainer/ConsolePanel/Container/InputContainer/RowPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 81.0
+margin_bottom = 49.0
+
+[node name="Label" type="Label" parent="MainContainer/ConsolePanel/Container/InputContainer/RowPanel/Row"]
+margin_right = 74.0
+margin_bottom = 14.0
+text = "Row"
+
+[node name="Input" type="SpinBox" parent="MainContainer/ConsolePanel/Container/InputContainer/RowPanel/Row"]
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 42.0
+allow_greater = true
+
+[node name="ResultButton" type="Button" parent="MainContainer/ConsolePanel/Container/InputContainer"]
+margin_left = 222.0
+margin_right = 302.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 80, 0 )
+text = "Get Data"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PopupDialog" type="AcceptDialog" parent="DialogContainer"]
+margin_left = 260.0
+margin_top = 171.0
+margin_right = 460.0
+margin_bottom = 229.0
+rect_min_size = Vector2( 200, 0 )
+popup_exclusive = true
+dialog_text = "MESSAGE"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="MainContainer/ConsolePanel/Container/InputContainer/ResultButton" to="." method="_on_ResultButton_pressed"]
