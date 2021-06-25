@@ -39,12 +39,19 @@ func get_data():
 	file.open("res://data/data.csv", File.READ)
 	console_println("Loading CSV data...")
 	
+	var line_index = -1
+	
 	# Iterate each CSV line into a data set
 	while !file.eof_reached():
-		var data_set = file.get_csv_line()
+		line_index += 1
+		var line = file.get_csv_line()
 		
-		# Append data set
-		csv_data.append(data_set)
+		# Get headers
+		if line_index == 0:
+			csv_headers = line
+		else:
+			# Append data set
+			csv_data.append(line)
 	
 	file.close()
 	
@@ -63,13 +70,6 @@ func get_data():
 		total_row -= 1
 		# Debug message
 		#print(csv_data)
-	
-	# Get headers
-	csv_headers = csv_data[0]
-	# Remove first array (headers)
-	csv_data.pop_front()
-	# Update total row
-	total_row -= 1
 	
 	# Return CSV data
 	return csv_data
