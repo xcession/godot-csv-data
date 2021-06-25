@@ -17,7 +17,7 @@ onready var popup_dialog = $DialogContainer/PopupDialog
 
 func _ready():
 	# Get data from CSV file
-	csv_data = get_data()
+	get_data()
 	
 	# Print CSV headers
 	console_println(csv_headers)

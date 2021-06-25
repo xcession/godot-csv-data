@@ -15,7 +15,7 @@ onready var popup_dialog = $DialogContainer/PopupDialog
 
 func _ready():
 	# Get data from CSV file
-	csv_data = get_data()
+	get_data()
 	
 	# Print each CSV line
 	for row in total_row:
