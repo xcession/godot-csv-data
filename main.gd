@@ -45,8 +45,8 @@ func get_data():
 	total_column = csv_data[0].size()
 	# Get row count
 	total_row = csv_data.size()
-	
-	print(csv_data)
+	# Debug message
+	#print(csv_data)
 	
 	# Remove trailing empty line(s)
 	while csv_data[total_row - 1][0].empty():
@@ -54,7 +54,8 @@ func get_data():
 		csv_data.pop_back()
 		# Update total row
 		total_row -= 1
-		print(csv_data)
+		# Debug message
+		#print(csv_data)
 	
 	# Return CSV data
 	return csv_data
