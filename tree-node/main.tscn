@@ -161,7 +161,6 @@ margin_top = 171.0
 margin_right = 460.0
 margin_bottom = 229.0
 rect_min_size = Vector2( 200, 0 )
-popup_exclusive = true
 dialog_text = "MESSAGE"
 __meta__ = {
 "_edit_lock_": true,
