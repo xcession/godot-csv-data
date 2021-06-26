@@ -34,18 +34,18 @@ func _ready():
 
 
 func get_data(path):
-	var file = File.new()
+	var file: File = File.new()
 	file.open(path, File.READ)
 	console_println("Loading CSV data...")
 	
-	var csv_data = []
+	var csv_data: Array = []
 	
-	var line_index = -1
+	var line_index: int = -1
 	
 	# Iterate each CSV line into a data set
 	while !file.eof_reached():
 		line_index += 1
-		var line = file.get_csv_line()
+		var line: Array = file.get_csv_line()
 		
 		# Get headers
 		if line_index == 0:
@@ -101,8 +101,8 @@ func assign_data_tree():
 
 
 func _on_ResultButton_pressed():
-	var data_column = $MainContainer/ConsolePanel/Container/InputContainer/ColumnPanel/Column/Input.get_line_edit().text
-	var data_row = $MainContainer/ConsolePanel/Container/InputContainer/RowPanel/Row/Input.get_line_edit().text
+	var data_column: String = $MainContainer/ConsolePanel/Container/InputContainer/ColumnPanel/Column/Input.get_line_edit().text
+	var data_row: String = $MainContainer/ConsolePanel/Container/InputContainer/RowPanel/Row/Input.get_line_edit().text
 	if int(data_column) < column_headers.size() && int(data_row) < data_set.size():
 		console_print("Column = {selected_column}, Row = {selected_row}".format({"selected_column":data_column, "selected_row":data_row}))
 		console_println("Data = {selected_data}".format({"selected_data":data_set[int(data_row)][int(data_column)]}))

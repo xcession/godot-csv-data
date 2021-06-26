@@ -1,11 +1,11 @@
 extends Control
 
 # CSV Data
-var csv_data = []
+var csv_data: Array = []
 
 # Total columns/rows
-var total_column
-var total_row
+var total_column: int
+var total_row: int
 
 # Define nodes
 onready var console = $MainContainer/ConsolePanel/Container/Console
@@ -27,14 +27,14 @@ func _ready():
 
 
 func get_data():
-	var file = File.new()
+	var file: File = File.new()
 	# Specify CSV file
 	file.open("res://data/data.csv", File.READ)
 	console_println("Loading CSV data...")
 	
 	# Iterate each CSV line into a data set
 	while !file.eof_reached():
-		var data_set = file.get_csv_line()
+		var data_set: Array = file.get_csv_line()
 		
 		# Append data set
 		csv_data.append(data_set)
@@ -62,8 +62,8 @@ func get_data():
 
 
 func _on_ResultButton_pressed():
-	var data_column = $MainContainer/ResultPanel/Container/InputContainer/ColumnPanel/Column/Input.get_line_edit().text
-	var data_row = $MainContainer/ResultPanel/Container/InputContainer/RowPanel/Row/Input.get_line_edit().text
+	var data_column: String = $MainContainer/ResultPanel/Container/InputContainer/ColumnPanel/Column/Input.get_line_edit().text
+	var data_row: String = $MainContainer/ResultPanel/Container/InputContainer/RowPanel/Row/Input.get_line_edit().text
 	if int(data_column) < total_column && int(data_row) < total_row:
 		result_print("Column = {selected_column}, Row = {selected_row}".format({"selected_column":data_column, "selected_row":data_row}))
 		result_println("Data = {selected_data}".format({"selected_data":csv_data[int(data_row)][int(data_column)]}))
