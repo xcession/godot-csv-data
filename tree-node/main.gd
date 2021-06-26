@@ -33,9 +33,9 @@ func _ready():
 	assign_data_tree()
 
 
-func get_data(file_path):
+func get_data(path):
 	var file = File.new()
-	file.open(file_path, File.READ)
+	file.open(path, File.READ)
 	console_println("Loading CSV data...")
 	
 	var csv_data = []
