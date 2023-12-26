@@ -9,9 +9,9 @@ var data_set: Array = []
 var column_headers: Array = []
 
 # Define nodes
-onready var tree = $MainContainer/DataPanel/Container/Tree
-onready var console = $MainContainer/ConsolePanel/Container/Console
-onready var popup_dialog = $DialogContainer/PopupDialog
+@onready var tree = $MainContainer/DataPanel/Container/Tree
+@onready var console = $MainContainer/ConsolePanel/Container/Console
+@onready var popup_dialog = $DialogContainer/Popup
 
 
 func _ready():
@@ -35,8 +35,7 @@ func _ready():
 
 
 func get_data(path):
-	var file: File = File.new()
-	file.open(path, File.READ)
+	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	console_println("Loading CSV data...")
 	
 	var csv_data: Array = []
@@ -61,7 +60,7 @@ func get_data(path):
 	#print(csv_data)
 	
 	# Remove trailing empty line(s)
-	while csv_data[csv_data.size() - 1][0].empty():
+	while csv_data[csv_data.size() - 1][0].is_empty():
 		# Remove last array (empty line)
 		csv_data.pop_back()
 		# Debug message
